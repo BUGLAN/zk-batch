@@ -1,4 +1,4 @@
-module zk_batch
+module github.com/BUGLAN/zk-batch
 
 go 1.13
 

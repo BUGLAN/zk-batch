@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/BUGLAN/zk-batch/batch"
 	"github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"sort"
-	"zk/batch"
 )
 
 func buildApp() *cli.App {
@@ -13,21 +13,21 @@ func buildApp() *cli.App {
 		Name: "zkUtil help you easy do boot you zookeeper data",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
-				Name:  "server",
+				Name:    "server",
 				Aliases: []string{"s"},
-				Value: "localhost:2181",
-				Usage: "specify zookeeper server",
+				Value:   "localhost:2181",
+				Usage:   "specify zookeeper server",
 			},
 			&cli.StringFlag{
-				Name:  "auth",
+				Name:    "auth",
 				Aliases: []string{"a"},
-				Usage: "zookeeper auth passport",
+				Usage:   "zookeeper auth passport",
 			},
 			&cli.StringFlag{
-				Name:  "digest",
+				Name:    "digest",
 				Aliases: []string{"u"},
-				Value: "digest",
-				Usage: "zookeeper auth digest",
+				Value:   "digest",
+				Usage:   "zookeeper auth digest",
 			},
 		},
 		Commands: []*cli.Command{
