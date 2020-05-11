@@ -10,7 +10,7 @@ import (
 
 func buildApp() *cli.App {
 	app := &cli.App{
-		Name: "zkUtil help you easy do boot you zookeeper data",
+		Name: "zku",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:    "server",
