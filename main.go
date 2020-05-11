@@ -10,7 +10,7 @@ import (
 
 func buildApp() *cli.App {
 	app := &cli.App{
-		Name: "zku",
+		Name: "zk-batch",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:    "server",
