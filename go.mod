@@ -1,4 +1,4 @@
-module zk
+module zk_batch
 
 go 1.13
 

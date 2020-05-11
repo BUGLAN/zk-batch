@@ -2,7 +2,11 @@
 
 > zk-batch help easy to import or export zookeeper data
 
+## install
 
+```bash
+go get github.com/BUGLAN/zk-batch
+```
 
 ## import data
 
