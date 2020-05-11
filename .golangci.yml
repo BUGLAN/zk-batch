@@ -1,0 +1,115 @@
+# 运行分析时的可选项(golangci-lint的配置)
+run:
+  # 默认并发的数量
+  concurrency: 8
+
+  # golangci-lint的timeout时间
+  timeout: 1m
+
+  # 问题发现时推出的状态码, 默认为-1
+  issues-exit-code: 1
+
+  # 是否包括测试代码
+  tests: true
+
+  # 跳过的文件夹(不执行lint)
+  skip-dirs:
+
+  # 默认跳过的文件夹 vendor$, third_party$, testdata$, examples$, Godeps$, builtin$
+  skip-dirs-use-default: true
+
+  # 默认跳过的文件
+  skip-files:
+
+# 输出配置
+output:
+  # colored-line-number|line-number|json|tab|checkstyle|code-climate, default is "colored-line-number"
+  format: colored-line-number
+
+  # 打印出有问题的代码,  默认开启
+  print-issued-lines: true
+
+  # 打印出输出的lint名称默认开启
+  print-linter-name: true
+
+  # 使问题输出按行唯一，默认开启
+  uniq-by-line: true
+
+
+# lint配置
+linters-settings:
+  maligned:
+    # 打印出意见
+    suggest-new: true
+
+  errcheck:
+    # 报告空白的err_check like _ = json.Unmarshal(msg.Body, &data)
+    check-blank: false
+    # 报告断言的错误
+    check-type-assertions: false
+
+  govet:
+    # report about shadowed variables
+    check-shadowing: true
+
+    # settings per analyzer
+    settings:
+      printf: # analyzer name, run `go tool vet help` to see all analyzers
+        funcs: # run `go tool vet help printf` to see available settings for `printf` analyzer
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
+
+linters:
+  enable:
+    - govet                   # Vet检查Go源代码并报告有问题的代码
+    - errcheck                # 检测代码中的错误检测
+    - staticcheck             # 静态代码分析
+    - gosimple                # 简化代码
+    - varcheck                # 发现没有用到的全局变量和常量
+    - deadcode                # 发现没有用到的代码
+    - typecheck               # 解析和类型检查Go代码
+    - bodyclose               # 检测http响应体是否成功关闭
+    - rowserrcheck            # 检查是否成功检查行错误
+    - stylecheck              # go lint 的替代品
+    - gosec                   # 检查代码是否存在安全问题
+    - interfacer              # 建议使用较窄接口类型的Linter
+    - unconvert               # 删除不必要的类型转换
+    - dupl                    # 代码克隆检测工具
+    - goconst                 # 查找可由常量替换的重复字符串
+    - gocyclo                 # 计算和检查函数的圈复杂度
+    - gocognit                # 计算和检查函数的认知复杂度
+    - maligned                # 用于检测Go结构的工具，如果对其字段进行排序，这些结构将占用较少的内存
+    - depguard                # 检查包导入是否在可接受包的列表中
+    - misspell                # 查找常见的拼写错误的英语单词
+    - unparam                 # 报告没有用到的参数
+    - dogsled                 # 检查具有太多空白标识符的赋值
+    - nakedret                # 在大于指定函数长度的函数中查找裸返回
+    - prealloc                # 查找可能预先分配的切片声明
+    - scopelint               # 检查go程序中的未固定变量
+    - gocritic                # 最固执的代码lint
+    - godox                   # 用于检测FIXME、TODO和其他注释关键字的工具
+#    - funlen                  # 检测长函数工具
+    - whitespace              # 前导和尾随空白检测工具
+    - goprintffuncname        # 检查printf-like函数是否以f结尾命名
+    - gomnd                   # 用来检测`magic numbers`的分析器。
+
+  disable:
+    - unused  # 检测代码中没有用到的常量, 变量 函数和类型
+    - ineffassign
+
+issues:
+  exclude-rules:
+    - linters:
+        - stylecheck
+      text: "ST1003:"
+    - linters:
+        - staticcheck
+      text: "SA4006:"
+    - linters:
+        - staticcheck
+      text: "SA5001:"
+    - path: _test\.go
+      linters:
+        - gomnd

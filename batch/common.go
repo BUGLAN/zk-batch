@@ -6,7 +6,10 @@ import (
 	"time"
 )
 
-const sep = "::"
+const (
+	sep            = "::"
+	defaultTimeout = 3
+)
 
 var (
 	flags int32 = 0
@@ -19,7 +22,7 @@ type ZkData struct {
 }
 
 func conn(host string) (conn *zk.Conn, err error) {
-	conn, _, err = zk.Connect([]string{host}, time.Second*3)
+	conn, _, err = zk.Connect([]string{host}, time.Second*defaultTimeout)
 	return conn, err
 }
 

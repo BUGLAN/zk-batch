@@ -73,17 +73,17 @@ func readZkChild(conn *zk.Conn, path string) (err error) {
 	for _, p := range lists {
 		if path == "/" {
 			pa := path + p
-			data, err := get(conn, pa)
-			if err != nil {
-				return err
+			data, err2 := get(conn, pa)
+			if err2 != nil {
+				return err2
 			}
 			zkData = append(zkData, ZkData{Path: pa, Data: data})
 			_ = readZkChild(conn, pa)
 		} else {
 			pa := path + "/" + p
-			data, err := get(conn, pa)
-			if err != nil {
-				return err
+			data, err2 := get(conn, pa)
+			if err2 != nil {
+				return err2
 			}
 			zkData = append(zkData, ZkData{Path: pa, Data: data})
 			_ = readZkChild(conn, pa)
@@ -109,6 +109,6 @@ func writeFile(filename string, zkData []ZkData) (err error) {
 		line := []byte(v.Path + sep + v.Data + "\n")
 		data = append(data, line...)
 	}
-	err = ioutil.WriteFile(filename, data, 0644)
+	err = ioutil.WriteFile(filename, data, 0600)
 	return err
 }
