@@ -11,11 +11,11 @@ go get github.com/BUGLAN/zk-batch
 ## import data
 
 ```bash
-go run main.go -s locahost:2181 -u digest -a admin:admin  import -f a.txt
+zk-batch -s locahost:2181 -u digest -a admin:admin  import -f a.txt
 ```
 
 ## export data
 
 ```bash
-go run main.go -s locahost:2181  -u digest -a admin:admin export -p / -f a.txt
+zk-batch  -s localhost:2181  -u digest -a admin:admin export -p / -f a.txt
 ```
