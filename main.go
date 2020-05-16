@@ -54,7 +54,7 @@ func buildApp() *cli.App {
 					&cli.StringFlag{
 						Name:    "filename",
 						Aliases: []string{"f"},
-						Usage:   "到处到指定的文件",
+						Usage:   "导出到指定的文件",
 					},
 					&cli.StringFlag{
 						Name:    "path",
