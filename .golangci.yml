@@ -94,6 +94,7 @@ linters:
     - whitespace              # 前导和尾随空白检测工具
     - goprintffuncname        # 检查printf-like函数是否以f结尾命名
     - gomnd                   # 用来检测`magic numbers`的分析器。
+    - golint
 
   disable:
     - unused  # 检测代码中没有用到的常量, 变量 函数和类型

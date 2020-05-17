@@ -1,5 +1,8 @@
 # zk-batch
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/BUGLAN/zk-batch)](https://goreportcard.com/report/github.com/BUGLAN/zk-batch)
+
+
 > zk-batch help easy to import or export zookeeper data
 
 ## install
