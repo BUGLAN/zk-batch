@@ -59,6 +59,7 @@ func parseFile(filename string) (data []ZkData, err error) {
 	list := make([]ZkData, 0)
 	defer func() {
 		if err := recover(); err != nil {
+			log.Fatalf("检索文件时出错请检查分隔符, err: %v", err)
 			return
 		}
 	}()
