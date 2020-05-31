@@ -1,5 +1,6 @@
 # zk-batch
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4bdf02c2fdab431ca2bd97f2b64515f0)](https://app.codacy.com/manual/BUGLAN/zk-batch?utm_source=github.com&utm_medium=referral&utm_content=BUGLAN/zk-batch&utm_campaign=Badge_Grade_Dashboard)
 [![Go Report Card](https://goreportcard.com/badge/github.com/BUGLAN/zk-batch)](https://goreportcard.com/report/github.com/BUGLAN/zk-batch)
 
 
